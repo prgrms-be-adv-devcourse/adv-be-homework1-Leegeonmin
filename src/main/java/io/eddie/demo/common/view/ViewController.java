@@ -1,11 +1,10 @@
 package io.eddie.demo.common.view;
 
-import io.eddie.demo.domain.carts.mapper.CartMapper;
-import io.eddie.demo.domain.carts.model.dto.CartDescription;
-import io.eddie.demo.domain.carts.model.entity.Cart;
-import io.eddie.demo.domain.carts.service.CartService;
+import io.eddie.demo.domain.carts.application.service.CartApplication;
+import io.eddie.demo.domain.carts.domain.model.Cart;
+import io.eddie.demo.domain.carts.infrastructure.mapper.CartMapper;
+import io.eddie.demo.domain.carts.infrastructure.model.dto.CartDescription;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/view")
 public class ViewController {
 
-    private final CartService cartService;
+    private final CartApplication cartService;
 
     @GetMapping("/carts/{accountCode}")
     public String viewCartDescriptionPage(

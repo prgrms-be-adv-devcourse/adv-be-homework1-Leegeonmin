@@ -1,8 +1,7 @@
 package io.eddie.demo.domain.orders.service;
 
-import io.eddie.demo.domain.carts.model.entity.Cart;
-import io.eddie.demo.domain.carts.model.entity.CartItem;
-import io.eddie.demo.domain.carts.service.CartService;
+import io.eddie.demo.domain.carts.application.service.CartApplication;
+import io.eddie.demo.domain.carts.domain.model.CartItem;
 import io.eddie.demo.domain.orders.model.entity.OrderItem;
 import io.eddie.demo.domain.orders.model.entity.Orders;
 import io.eddie.demo.domain.orders.model.vo.CreateOrderRequest;
@@ -24,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
 
-    private final CartService cartService;
+    private final CartApplication cartService;
 
     @Override
     @Transactional

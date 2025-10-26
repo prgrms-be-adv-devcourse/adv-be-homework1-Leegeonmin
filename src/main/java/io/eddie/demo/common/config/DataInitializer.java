@@ -3,11 +3,10 @@ package io.eddie.demo.common.config;
 import io.eddie.demo.domain.accounts.model.dto.CreateAccountRequest;
 import io.eddie.demo.domain.accounts.model.entity.Account;
 import io.eddie.demo.domain.accounts.service.AccountService;
-import io.eddie.demo.domain.carts.model.entity.Cart;
-import io.eddie.demo.domain.carts.model.entity.CartItem;
-import io.eddie.demo.domain.carts.model.vo.CreateCartItemRequest;
-import io.eddie.demo.domain.carts.service.CartService;
-import io.eddie.demo.domain.deposits.model.entity.Deposit;
+import io.eddie.demo.domain.carts.application.service.CartApplication;
+import io.eddie.demo.domain.carts.domain.model.Cart;
+import io.eddie.demo.domain.carts.domain.model.CartItem;
+import io.eddie.demo.domain.carts.infrastructure.model.web.CreateCartItemRequest;
 import io.eddie.demo.domain.deposits.model.entity.DepositHistory;
 import io.eddie.demo.domain.deposits.service.DepositService;
 import io.eddie.demo.domain.orders.model.entity.Orders;
@@ -19,8 +18,6 @@ import io.eddie.demo.domain.payments.service.PaymentService;
 import io.eddie.demo.domain.products.model.dto.UpsertProductRequest;
 import io.eddie.demo.domain.products.model.entity.Product;
 import io.eddie.demo.domain.products.service.ProductService;
-import io.eddie.demo.domain.settlements.model.entity.Settlement;
-import io.eddie.demo.domain.settlements.repository.SettlementRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -39,7 +36,7 @@ public class DataInitializer implements ApplicationRunner {
 
     private final AccountService accountService;
     private final ProductService productService;
-    private final CartService cartService;
+    private final CartApplication cartService;
 
     private final DepositService depositService;
     private final OrderService orderService;
