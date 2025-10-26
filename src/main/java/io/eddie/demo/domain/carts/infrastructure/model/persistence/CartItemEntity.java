@@ -1,33 +1,36 @@
-package io.eddie.demo.domain.carts.model.entity;
+package io.eddie.demo.domain.carts.infrastructure.model.persistence;
 
 import io.eddie.demo.common.model.persistence.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Entity
 @NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
-public class CartItem extends BaseEntity {
-
+@Table(name = "CartItem")
+public class CartItemEntity extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "cart_id")
-    private Cart cart;
+    private CartEntity cart;
 
     // 상품 상세 캐싱
+    @Setter
     private String productCode;
 
+    @Setter
     private String productName;
 
+    @Setter
     private Long productPrice;
 
+    @Setter
     private Integer quantity;
 
     @Builder
-    public CartItem(Cart cart, String productCode, String productName, Long productPrice, Integer quantity) {
+    public CartItemEntity(CartEntity cart,String productCode, String productName, Long productPrice, Integer quantity) {
         this.cart = cart;
         this.productCode = productCode;
         this.productName = productName;

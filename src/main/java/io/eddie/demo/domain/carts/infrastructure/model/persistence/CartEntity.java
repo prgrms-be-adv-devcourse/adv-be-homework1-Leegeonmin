@@ -1,8 +1,7 @@
-package io.eddie.demo.domain.carts.model.entity;
+package io.eddie.demo.domain.carts.infrastructure.model.persistence;
 
 import io.eddie.demo.common.model.persistence.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,21 +12,25 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
-public class Cart extends BaseEntity {
+@Table(name = "Cart")
+public class CartEntity extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto identity sequence, uui
+    private Long id;
 
     private String accountCode;
 
     @OneToMany(mappedBy = "cart")
-    List<CartItem> cartItems = new ArrayList<>();
+    List<CartItemEntity> cartItems = new ArrayList<>();
 
     @Builder
-    public Cart(String accountCode) {
+    public CartEntity(String accountCode) {
         this.accountCode = accountCode;
     }
 
     public Long getTotalPrice() {
         return cartItems.stream()
-                .map(CartItem::getItemPrice)
+                .map(CartItemEntity::getItemPrice)
                 .reduce(Long::sum)
                 .orElse(0L);
     }

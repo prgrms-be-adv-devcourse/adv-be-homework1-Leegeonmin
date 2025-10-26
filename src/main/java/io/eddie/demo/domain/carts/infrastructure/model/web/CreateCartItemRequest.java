@@ -1,10 +1,10 @@
-package io.eddie.demo.domain.carts.model.vo;
+package io.eddie.demo.domain.carts.infrastructure.model.web;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record CreateCartItemRequest(
+public record CreateCartItemRequest (
         @NotBlank(message = "상품 코드는 반드시 입력되어야 합니다.")
         String productCode,
 
@@ -16,5 +16,5 @@ public record CreateCartItemRequest(
 
         @Min(value = 1, message = "최소한 한 개 이상을 추가해주시기 바랍니다.")
         Integer quantity
-) {
+){
 }

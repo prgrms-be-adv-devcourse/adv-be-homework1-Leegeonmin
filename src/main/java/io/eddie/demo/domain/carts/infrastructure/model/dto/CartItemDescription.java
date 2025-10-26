@@ -1,4 +1,4 @@
-package io.eddie.demo.domain.carts.model.dto;
+package io.eddie.demo.domain.carts.infrastructure.model.dto;
 
 import java.time.LocalDateTime;
 

@@ -2,6 +2,7 @@ package io.eddie.demo.common.model.persistence;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -23,6 +24,7 @@ public class BaseEntity {
     private String code = UUID.randomUUID().toString();
 
     @Enumerated(EnumType.STRING)
+    @Setter
     private DeleteStatus deleteStatus = DeleteStatus.N;
 
     @CreatedDate

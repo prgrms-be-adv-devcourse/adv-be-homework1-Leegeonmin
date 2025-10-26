@@ -1,13 +1,13 @@
-package io.eddie.demo.domain.carts.service;
+package io.eddie.demo.domain.carts.application.port.in;
 
-import io.eddie.demo.domain.carts.model.entity.Cart;
-import io.eddie.demo.domain.carts.model.entity.CartItem;
-import io.eddie.demo.domain.carts.model.vo.CreateCartItemRequest;
+import io.eddie.demo.domain.carts.domain.model.Cart;
+import io.eddie.demo.domain.carts.domain.model.CartItem;
+import io.eddie.demo.domain.carts.infrastructure.model.web.CreateCartItemRequest;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface CartService {
-
+public interface CartCrudUseCase {
     Cart save(String accountCode);
 
     Cart getByAccountCode(String accountCode);

@@ -1,33 +1,37 @@
-package io.eddie.demo.domain.carts.api;
+package io.eddie.demo.domain.carts.infrastructure.adapter.in;
 
 import io.eddie.demo.common.model.web.BaseResponse;
-import io.eddie.demo.domain.carts.mapper.CartMapper;
-import io.eddie.demo.domain.carts.model.dto.CartDescription;
-import io.eddie.demo.domain.carts.model.dto.CartItemDescription;
-import io.eddie.demo.domain.carts.model.entity.Cart;
-import io.eddie.demo.domain.carts.model.entity.CartItem;
-import io.eddie.demo.domain.carts.model.vo.CreateCartItemRequest;
-import io.eddie.demo.domain.carts.service.CartService;
+import io.eddie.demo.domain.carts.application.port.in.CartCrudUseCase;
+import io.eddie.demo.domain.carts.infrastructure.mapper.CartMapper;
+import io.eddie.demo.domain.carts.infrastructure.model.dto.CartDescription;
+import io.eddie.demo.domain.carts.infrastructure.model.dto.CartItemDescription;
+import io.eddie.demo.domain.carts.domain.model.Cart;
+import io.eddie.demo.domain.carts.domain.model.CartItem;
+import io.eddie.demo.domain.carts.infrastructure.model.web.CreateCartItemRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
+
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/carts")
-public class CartApiController {
+public class CartController {
 
-    private final CartService cartService;
+    private final CartCrudUseCase cartService;
 
     @GetMapping
     public BaseResponse<CartDescription> getDescription(
             @AuthenticationPrincipal(expression = "accountCode") String accountCode
     ) {
-        Cart cart = cartService.getByAccountCode(accountCode);
         return new BaseResponse<>(
-                CartMapper.toCartDescription(cart),
+                CartMapper.toCartDescription(cartService.
+                        getByAccountCode(accountCode)),
                 "장바구니를 성공적으로 조회하였습니다"
         );
     }
@@ -81,8 +85,6 @@ public class CartApiController {
                 "장바구니 항목 갯수가 성공적으로 감소되었습니다."
         );
     }
-
-
 
 
 }
