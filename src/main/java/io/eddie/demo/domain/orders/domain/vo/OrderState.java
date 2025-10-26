@@ -1,4 +1,4 @@
-package io.eddie.demo.domain.orders.model.vo;
+package io.eddie.demo.domain.orders.domain.vo;
 
 public enum OrderState {
     CREATED,

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.eddie.demo.domain.deposits.model.entity.Deposit;
 import io.eddie.demo.domain.deposits.model.entity.DepositHistory;
 import io.eddie.demo.domain.deposits.service.DepositService;
-import io.eddie.demo.domain.orders.model.entity.Orders;
-import io.eddie.demo.domain.orders.service.OrderService;
+import io.eddie.demo.domain.orders.domain.model.Orders;
+import io.eddie.demo.domain.orders.application.service.OrderApplication;
 import io.eddie.demo.domain.payments.model.dto.PaymentRequest;
 import io.eddie.demo.domain.payments.model.entity.Payment;
 import io.eddie.demo.domain.payments.model.vo.*;
@@ -34,7 +34,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final ObjectMapper om;
 
-    private final OrderService orderService;
+    private final OrderApplication orderService;
     private final DepositService depositService;
     private final PaymentRepository paymentRepository;
 

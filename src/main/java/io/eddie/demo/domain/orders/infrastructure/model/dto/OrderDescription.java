@@ -1,7 +1,6 @@
-package io.eddie.demo.domain.orders.model.dto;
+package io.eddie.demo.domain.orders.infrastructure.model.dto;
 
-import io.eddie.demo.domain.orders.model.entity.Orders;
-import io.eddie.demo.domain.orders.model.vo.OrderState;
+import io.eddie.demo.domain.orders.domain.vo.OrderState;
 
 import java.time.LocalDateTime;
 import java.util.List;

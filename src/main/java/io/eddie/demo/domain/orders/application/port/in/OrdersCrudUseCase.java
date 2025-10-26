@@ -1,13 +1,12 @@
-package io.eddie.demo.domain.orders.service;
+package io.eddie.demo.domain.orders.application.port.in;
 
-import io.eddie.demo.domain.orders.model.vo.CreateOrderRequest;
-import io.eddie.demo.domain.orders.model.entity.Orders;
-import io.eddie.demo.domain.orders.model.vo.OrderState;
+import io.eddie.demo.domain.orders.domain.model.Orders;
+import io.eddie.demo.domain.orders.infrastructure.model.vo.CreateOrderRequest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
-public interface OrderService {
+import java.awt.print.Pageable;
 
+public interface OrdersCrudUseCase {
     Orders createOrder(String accountCode, CreateOrderRequest request);
 
     Orders getOrder(String accountCode, String orderCode);
@@ -18,5 +17,4 @@ public interface OrderService {
     Orders cancelOrder(String accountCode, String orderCode);
 
     Page<Orders> getOrders(String accountCode, Pageable pageable);
-
 }

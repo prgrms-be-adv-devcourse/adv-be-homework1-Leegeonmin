@@ -9,9 +9,9 @@ import io.eddie.demo.domain.carts.domain.model.CartItem;
 import io.eddie.demo.domain.carts.infrastructure.model.web.CreateCartItemRequest;
 import io.eddie.demo.domain.deposits.model.entity.DepositHistory;
 import io.eddie.demo.domain.deposits.service.DepositService;
-import io.eddie.demo.domain.orders.model.entity.Orders;
-import io.eddie.demo.domain.orders.model.vo.CreateOrderRequest;
-import io.eddie.demo.domain.orders.service.OrderService;
+import io.eddie.demo.domain.orders.domain.model.Orders;
+import io.eddie.demo.domain.orders.infrastructure.model.vo.CreateOrderRequest;
+import io.eddie.demo.domain.orders.application.service.OrderApplication;
 import io.eddie.demo.domain.payments.model.dto.PaymentRequest;
 import io.eddie.demo.domain.payments.model.vo.PaymentType;
 import io.eddie.demo.domain.payments.service.PaymentService;
@@ -39,7 +39,7 @@ public class DataInitializer implements ApplicationRunner {
     private final CartApplication cartService;
 
     private final DepositService depositService;
-    private final OrderService orderService;
+    private final OrderApplication orderService;
     private final PaymentService paymentService;
 
     @Override

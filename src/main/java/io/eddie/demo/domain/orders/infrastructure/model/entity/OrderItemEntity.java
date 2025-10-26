@@ -1,4 +1,4 @@
-package io.eddie.demo.domain.orders.model.entity;
+package io.eddie.demo.domain.orders.infrastructure.model.entity;
 
 import io.eddie.demo.common.model.persistence.BaseEntity;
 import jakarta.persistence.Column;
@@ -10,12 +10,12 @@ import lombok.*;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class OrderItem extends BaseEntity {
+public class OrderItemEntity extends BaseEntity {
 
     @Setter
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Orders order;
+    private OrdersEntity order;
 
     /*
     주문 시점의 제품 상세정보
@@ -33,7 +33,7 @@ public class OrderItem extends BaseEntity {
     private Integer quantity;
 
     @Builder
-    public OrderItem(Orders order, String productCode, String productName, Long productPrice, Integer quantity) {
+    public OrderItemEntity(OrdersEntity order, String productCode, String productName, Long productPrice, Integer quantity) {
         this.order = order;
         this.productCode = productCode;
         this.productName = productName;
